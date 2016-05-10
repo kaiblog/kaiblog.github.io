@@ -50,7 +50,7 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+  <link rel="shortcut icon" type="image/x-icon" href="/icon.ico?v=0.5.0" />
 
 
 
@@ -226,6 +226,100 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/03/shell命令/" itemprop="url">
+                  shell命令
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-03T21:13:18+08:00" content="2016-05-03">
+              2016-05-03
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="shell命令"><a href="#shell命令" class="headerlink" title="shell命令"></a>shell命令</h1><hr>
+<p>整理了一些自己常用的命令</p>
+<hr>
+<h2 id="一：基本命令"><a href="#一：基本命令" class="headerlink" title="一：基本命令"></a>一：基本命令</h2><h3 id="1"><a href="#1" class="headerlink" title="1"></a>1</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#根据关键字模糊查找命令</span><br><span class="line">apropos word</span><br></pre></td></tr></table></figure>
+<h2 id="二：网络"><a href="#二：网络" class="headerlink" title="二：网络"></a>二：网络</h2><h3 id="1-1"><a href="#1-1" class="headerlink" title="1"></a>1</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 网络监控</span><br><span class="line">netstat</span><br><span class="line"># 查看启动了那些端口</span><br><span class="line">nmap localhost</span><br><span class="line"># 追踪数据包</span><br><span class="line">traceroute -q 4 baidu.com</span><br></pre></td></tr></table></figure>
+<h1 id="三：AWK"><a href="#三：AWK" class="headerlink" title="三：AWK"></a>三：AWK</h1><h3 id="其中单引号中的被大括号括着的就是awk语句，注意：只能用单引号"><a href="#其中单引号中的被大括号括着的就是awk语句，注意：只能用单引号" class="headerlink" title="其中单引号中的被大括号括着的就是awk语句，注意：只能用单引号"></a>其中单引号中的被大括号括着的就是awk语句，注意：只能用单引号</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"># 打印文件中的第一和第四列数据,</span><br><span class="line">awk &apos;&#123;print $1, $4&#125;&apos; file.txt</span><br><span class="line"></span><br><span class="line"># 格式化输出</span><br><span class="line">awk &apos;&#123;printf &quot;%-8s %8s\n&quot;, $1, $2&#125;&apos; file.txt</span><br><span class="line"></span><br><span class="line"># 过滤</span><br><span class="line">awk &apos;$2==1 &amp;&amp; $3==&quot;root&quot;&apos; file.txt</span><br><span class="line"></span><br><span class="line"># 运算符：!=, ==, &gt;, &lt;, &gt;=, &lt;=</span><br><span class="line">awk &apos;$2&gt;1 &#123;print $3&#125;&apos; file.txt</span><br><span class="line"></span><br><span class="line"># 内建变量：</span><br><span class="line">#   $0：当前记录</span><br><span class="line">#   $1~$n：当前记录的第N个字段，字段间由FS分隔</span><br><span class="line">#   NR：已读的记录数，行号。从1开始，多个文件，值会不断累加</span><br><span class="line">#   FNR：当前记录数，行号。从1开始，这个值是对应各个文件的</span><br><span class="line">#   NF：当前记录中的字段个数，列数。</span><br><span class="line">#   FS：输入字段分隔符，默认为空格或Tab</span><br><span class="line">#   RS：输入记录分隔符，默认为换行符</span><br><span class="line">#   OFS：输出字段分隔符，默认为空格</span><br><span class="line">#   ORS：输出记录分隔符，默认为换行符</span><br><span class="line">#   FILENAME：当前输入文件名字 </span><br><span class="line">awk &apos;$2==1 &amp;&amp; $3==&quot;root&quot; || NR==1 &apos; file.txt</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/03/Markdown/" itemprop="url">
                   Markdown
                 </a>
@@ -349,7 +443,7 @@
 <h3 id="10-文稿发布和分享"><a href="#10-文稿发布和分享" class="headerlink" title="10. 文稿发布和分享"></a>10. 文稿发布和分享</h3><p>在您使用 Cmd Markdown 记录，创作，整理，阅读文稿的同时，我们不仅希望它是一个有力的工具，更希望您的思想和知识通过这个平台，连同优质的阅读体验，将他们分享给有相同志趣的人，进而鼓励更多的人来到这里记录分享他们的思想和知识，尝试点击 <i class="icon-share"></i> (Ctrl+Alt+P) 发布这份文档给好友吧！</p>
 <hr>
 <p>再一次感谢您花费时间阅读这份欢迎稿，点击 <i class="icon-file"></i> (Ctrl+Alt+N) 开始撰写新的文稿吧！祝您在这里记录、阅读、分享愉快！</p>
-<p>作者 <a href="http://weibo.com/ghosert" target="_blank" rel="external">@ghosert</a><br>2015 年 06月 15日    </p>
+<p>作者 [@ghosert]<br>2015 年 06月 15日    </p>
 <p>[^LaTeX]: 支持 <strong>LaTeX</strong> 编辑显示支持，例如：$\sum_{i=1}^n a_i=0$， 访问 <a href="http://meta.math.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference" target="_blank" rel="external">MathJax</a> 参考更多使用方法。</p>
 <p>[^code]: 代码高亮功能支持包括 Java, Python, JavaScript 在内的，<strong>四十一</strong>种主流编程语言。</p>
 
@@ -417,7 +511,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-count">2</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
